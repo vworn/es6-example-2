@@ -1,15 +1,8 @@
-const BASE_URL = 'https://jsonplaceholder.typicode.com/posts';
-
-export function getPosts() {
-  return fetch(BASE_URL)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
-      }
-      return response.json();
-    })
-    .catch(error => {
-      console.error('Fetch failed:', error.message);
-      throw error;
-    });
+export async function getUsers() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
 }
+

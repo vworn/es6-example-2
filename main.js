@@ -1,19 +1,19 @@
-import { getPosts } from './api.js';
+import { getUsers } from './api.js';
 
-function displayPosts() {
+function displayUsers() {
   const container = document.getElementById('postContainer');
 
-  getPosts()
-    .then(posts => {
-      posts.slice(0, 5).forEach(post => {
+  getUsers()
+    .then(users => {
+      users.forEach(user => {
         const div = document.createElement('div');
-        div.innerHTML = `<h3>${post.title}</h3><p>${post.body}</p>`;
+        div.innerHTML = `<h3>${user.name}</h3><p>${user.email}</p>`;
         container.appendChild(div);
       });
     })
     .catch(err => {
-      container.innerHTML = `<p style="color:red;">Failed to load posts: ${err.message}</p>`;
+      container.innerHTML = `<p style="color:red;">Failed to load users: ${err.message}</p>`;
     });
 }
 
-displayPosts();
+displayUsers();
